@@ -1,4 +1,4 @@
-#15-896 Course Porject
+#15-896 Course Project
 
-this is the plot
+This is the plot
 
