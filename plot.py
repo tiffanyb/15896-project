@@ -8,8 +8,8 @@ def plot_ne(num, ax, d=0.5,p1=0.9,p2=0.2,q=0):
     print d, p1, p2, q
     ax.clear()
 
-    red_patch = mpatches.Patch(color='gold', label='Disclose, Attack')
-    pl.legend(handles=[red_patch])
+#    red_patch = mpatches.Patch(color='gold', label='Disclose, Attack')
+#    pl.legend(handles=[red_patch])
     x = np.arange(0.0, 1.01, 0.01)
     y1 = d*x
     y1 = np.minimum(y1,[1 for i in x])
@@ -33,7 +33,7 @@ def plot_ne(num, ax, d=0.5,p1=0.9,p2=0.2,q=0):
             lw=0.0, alpha=0.7)
     pl.xlabel(r'$\gamma$',fontsize=20)
     pl.ylabel(r'$1-c$',fontsize=20)
-    yellow_patch = mpatches.Patch(color='gold', alpha=0.7, label='Disclose, Attack')
+    yellow_patch = mpatches.Patch(color='gold', alpha=0.7, label='Attack, Disclose')
     blue_patch = mpatches.Patch(color=blue, alpha=0.7, label='Disclose, Attack')
     green_patch = mpatches.Patch(color='yellowgreen', alpha=0.7,
             label='Disclose, Attack & Attack, Disclose')
@@ -41,8 +41,12 @@ def plot_ne(num, ax, d=0.5,p1=0.9,p2=0.2,q=0):
             label='Disclose, Disclose')
     purple_patch = mpatches.Patch(color='#9467bd', alpha=0.7,
             label='Attack, Attack')
+
+    box = ax.get_position()
+    ax.set_position([box.x0, box.y0, box.width * 0.6, box.height])
+
     ax.legend(handles=[red_patch, yellow_patch, green_patch, blue_patch,
-        purple_patch])
+        purple_patch],loc="center left",bbox_to_anchor=(1.05,0.5))
     # ax.plot(x,y1,"black",x,y2,"yellow",x,y3,"blue",x,y4,"black",
     #        alpha=0)
 
@@ -52,13 +56,9 @@ def plot_ne(num, ax, d=0.5,p1=0.9,p2=0.2,q=0):
 
 def animate():
     fig, ax = pl.subplots()
-    red_patch = mpatches.Patch(color='gold', label='Disclose, Attack')
-    pl.legend(handles=[red_patch])
-    # anim = FuncAnimation(fig, plot_ne, 10, interval=50, blit=False,
-            # fargs=(ax, 0.5, 0.9, 0.2, 0))
-    plot_ne(0, ax)
-    red_patch = mpatches.Patch(color='gold', label='Disclose, Attack')
-    pl.legend(handles=[red_patch])
+    anim = FuncAnimation(fig, plot_ne, 10, interval=50, blit=False,
+            fargs=(ax, 0.5, 0.9, 0.2, 0))
+    # plot_ne(0, ax)
     pl.show()
 
 if __name__ == "__main__":
