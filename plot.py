@@ -24,7 +24,8 @@ def plot_ne(num, ax, d=0.5,p1=0.9,p2=0.2,q=0):
     ax.set_ylim(top=1.2)
     ax.fill_between(x,y2,y3,where=y3<=y2,facecolor="gold",
             lw=0.0, alpha=0.7)
-    ax.fill_between(x,y3,y2,where=y3>y2,facecolor="#1f77b4",
+    blue = "#1f77b4"
+    ax.fill_between(x,y3,y2,where=y3>y2,facecolor=blue,
             lw=0.0, alpha=0.7)
     ax.fill_between(x,y1,y5,facecolor="yellowgreen", lw=0.0, alpha=0.7)
     ax.fill_between(x,y6,y4,facecolor="#9467bd", lw=0.0, alpha=0.7)
@@ -32,8 +33,16 @@ def plot_ne(num, ax, d=0.5,p1=0.9,p2=0.2,q=0):
             lw=0.0, alpha=0.7)
     pl.xlabel(r'$\gamma$',fontsize=20)
     pl.ylabel(r'$1-c$',fontsize=20)
-    red_patch = mpatches.Patch(color='gold', label='Disclose, Attack')
-    ax.legend(handles=[red_patch])
+    yellow_patch = mpatches.Patch(color='gold', alpha=0.7, label='Disclose, Attack')
+    blue_patch = mpatches.Patch(color=blue, alpha=0.7, label='Disclose, Attack')
+    green_patch = mpatches.Patch(color='yellowgreen', alpha=0.7,
+            label='Disclose, Attack & Attack, Disclose')
+    red_patch = mpatches.Patch(color='#ff9896', alpha=0.7,
+            label='Disclose, Disclose')
+    purple_patch = mpatches.Patch(color='#9467bd', alpha=0.7,
+            label='Attack, Attack')
+    ax.legend(handles=[red_patch, yellow_patch, green_patch, blue_patch,
+        purple_patch])
     # ax.plot(x,y1,"black",x,y2,"yellow",x,y3,"blue",x,y4,"black",
     #        alpha=0)
 
