@@ -3,11 +3,13 @@ import matplotlib.patches as mpatches
 import matplotlib.pyplot as pl
 from matplotlib.animation import FuncAnimation
 
-def plot_ne(num, ax, d=0.5,p1=0.9,p2=0.2,q=0):
+def plot_ne(num, ax, d=0.5,p1=0.8,p2=0.2,q=0):
     if num <=100:
-        q=num/100.0
+        d=num/100.0
     else:
-        q=1-(num-100)/100.0
+        d=1-(num-100)/100.0
+
+    d=d*2
 
     print d, p1, p2, q
     ax.clear()
